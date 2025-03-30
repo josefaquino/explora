@@ -3,34 +3,38 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Garante que a altura seja pelo menos a da tela */
+    min-height: 100vh;
     margin: 0;
-    background-color: #e0f2f7; /* Azul bem claro e suave */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte moderna */
+    background-color: #ffffff; /* Fundo branco */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .explora-logo {
-    font-size: 4.5rem; /* Ligeiramente maior */
+    font-size: 4.5rem;
     font-weight: bold;
-    color: #26a69a; /* Verde-azulado atraente */
+    color: #a0522d; /* Tom de café (Sienna) */
     letter-spacing: 0.05em;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* Sombra ainda mais sutil */
-    margin-bottom: 20px; /* Espaçamento abaixo do logo */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    font-family: 'Epilogue', sans-serif;
+    font-weight: 200;
 }
 
 .subtext {
     font-size: 1.3rem;
-    color: #757575; /* Cinza um pouco mais claro */
-    margin-top: 0; /* Remove a margem superior padrão */
-    margin-bottom: 30px; /* Espaçamento abaixo do subtexto */
+    color: #757575;
+    margin-top: 0;
+    margin-bottom: 30px;
     text-align: center;
-    font-style: italic; /* Adiciona um toque elegante */
+    font-style: italic;
 }
 
 .input-area {
     display: flex;
-    gap: 10px; /* Espaçamento entre o input e o botão */
-    margin-top: 20px; /* Espaçamento acima da área de busca */
+    gap: 10px;
+    margin-top: 20px;
+    width: 80%; /* Aumenta a largura da área de busca */
+    max-width: 600px; /* Define uma largura máxima para não ficar muito grande em telas maiores */
 }
 
 .input-area input[type="text"] {
@@ -38,27 +42,27 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
-    flex-grow: 1; /* Faz o input ocupar mais espaço */
+    flex-grow: 2; /* Dobra a proporção de crescimento do input */
 }
 
 .input-area button {
-    background-color: #4caf50; /* Verde */
-    color: #f0f0f0; /* Texto branco */
+    background-color: #4caf50;
+    color: #f0f0f0;
     padding: 12px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
-    transition: background-color 0.3s ease; /* Transição suave ao passar o mouse */
+    transition: background-color 0.3s ease;
 }
 
 .input-area button:hover {
-    background-color: #45a049; /* Verde um pouco mais escuro no hover */
+    background-color: #45a049;
 }
 
 .output-area {
     margin-top: 40px;
     text-align: center;
-    color: #616161; /* Cinza médio */
+    color: #616161;
 }
