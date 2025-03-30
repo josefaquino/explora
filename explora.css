@@ -10,9 +10,9 @@ body {
 }
 
 .explora-logo {
-    font-size: 4.5rem;
+    font-size: 5.5rem;
     font-weight: bold;
-    color: #a0522d; /* Tom de café (Sienna) */
+    color: #333333; /* Grafite bem escuro */
     letter-spacing: 0.05em;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
