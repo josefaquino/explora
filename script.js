@@ -1,4 +1,4 @@
-const apiKey = 'YOUR_API_KEY'; // Substitua pela sua chave de API real
+const apiKey = 'AIzaSyCg6VKxU887z4QTfLBbNorlWx0asVUQmp0'; // Substitua pela sua chave de API real
 
 async function processTopic() {
     const topicInput = document.getElementById('topicInput');
