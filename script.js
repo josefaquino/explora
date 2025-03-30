@@ -58,4 +58,14 @@ async function processTopic() {
         outputArea.textContent = 'Ocorreu um erro ao buscar a resposta.';
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const exploreButton = document.getElementById('exploreButton');
+    if (exploreButton) {
+        exploreButton.addEventListener('click', processTopic);
+    } else {
+        console.error('Botão "Explorar" não encontrado!');
+    }
+});
+
 console.log('Teste aiSummary:', document.getElementById('aiSummary'));
