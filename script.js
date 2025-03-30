@@ -58,3 +58,4 @@ async function processTopic() {
         outputArea.textContent = 'Ocorreu um erro ao buscar a resposta.';
     }
 }
+console.log('Teste aiSummary:', document.getElementById('aiSummary'));
