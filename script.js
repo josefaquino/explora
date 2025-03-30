@@ -24,9 +24,12 @@ async function processTopic() {
         const data = await response.json();
         console.log('Resposta da API:', data);
 
+        console.log('aiSummary element:', document.getElementById('aiSummary'));
+        console.log('aiResponse element:', document.getElementById('aiResponse'));
+        console.log('relatedLinks element:', document.getElementById('relatedLinks'));
+
         if (data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0].text) {
             const respostaCompletaIA = data.candidates[0].content.parts[0].text;
-            const outputArea = document.querySelector('.output-area');
             const summaryDiv = document.getElementById('aiSummary');
             const responseDiv = document.getElementById('aiResponse');
 
