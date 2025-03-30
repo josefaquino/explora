@@ -1,19 +1,12 @@
-const apiKey = 'AIzaSyCg6VKxU887z4QTfLBbNorlWx0asVUQmp0'; // Substitua pela sua chave de API real
+const apiKey = 'YOUR_API_KEY'; // Substitua pela sua chave de API real
 
 async function processTopic() {
-    console.log('processTopic foi chamado!');
-    const aiSummaryElement = document.getElementById('aiSummary');
-    console.log('aiSummary element dentro da função:', aiSummaryElement);
-
     const topicInput = document.getElementById('topicInput');
     const topic = topicInput.value;
     const outputArea = document.querySelector('.output-area');
-    outputArea.textContent = 'Buscando informações...'; // Mensagem enquanto a API responde
+    outputArea.textContent = 'Buscando informações...';
 
     const model = 'gemini-2.0-flash';
-
-    const aiResponseElement = document.getElementById('aiResponse'); // Mova esta linha para cá
-    const relatedLinksElement = document.getElementById('relatedLinks'); // Mova esta linha para cá
 
     try {
         const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
@@ -23,7 +16,7 @@ async function processTopic() {
             },
             body: JSON.stringify({
                 contents: [{
-                    parts: [{ text: `Explique o tópico: ${topic}. Inclua também um breve resumo dos principais pontos.` }] // Pedindo o resumo
+                    parts: [{ text: `Explique o tópico: ${topic}.` }]
                 }]
             })
         });
@@ -31,30 +24,12 @@ async function processTopic() {
         const data = await response.json();
         console.log('Resposta da API:', data);
 
-        console.log('aiResponse element:', aiResponseElement); // Use a variável local agora
-        console.log('relatedLinks element:', relatedLinksElement); // Use a variável local agora
-
         if (data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0].text) {
-            const respostaCompletaIA = data.candidates[0].content.parts[0].text;
-            const summaryDiv = aiSummaryElement; // Use a variável que já obtivemos
-            const responseDiv = aiResponseElement; // Use a variável que já obtivemos
-
-            // Vamos tentar separar o resumo da resposta principal (assumindo que o resumo vem no início)
-            const parts = respostaCompletaIA.split('\n\n');
-
-            summaryDiv.innerHTML = '';
-            responseDiv.innerHTML = '';
-
-            if (parts.length > 0) {
-                summaryDiv.innerHTML = '<h3>Resumo:</h3><p>' + parts[0] + '</p>'; // Exibe o primeiro bloco como resumo
-                if (parts.length > 1) {
-                    responseDiv.innerHTML = '<h3>Explicação:</h3>' + parts.slice(1).join('<p></p>'); // Exibe o restante como explicação
-                } else {
-                    responseDiv.innerHTML = '<h3>Explicação:</h3><p>' + parts[0] + '</p>'; // Se só houver um bloco, considera como explicação
-                }
-            } else {
-                responseDiv.innerHTML = '<p>' + respostaCompletaIA + '</p>'; // Se não conseguir separar, exibe tudo como explicação
-            }
+            const aiResponseText = data.candidates[0].content.parts[0].text;
+            const responseDiv = document.getElementById('aiResponse');
+            responseDiv.innerHTML = '<p>' + aiResponseText.replace(/\n/g, '<br>') + '</p>';
+            document.getElementById('aiSummary').innerHTML = ''; // Limpa a área de resumo
+            document.getElementById('relatedLinks').innerHTML = ''; // Limpa a área de links relacionados
         } else {
             outputArea.textContent = 'Não foi possível obter uma resposta da IA.';
         }
@@ -64,27 +39,3 @@ async function processTopic() {
         outputArea.textContent = 'Ocorreu um erro ao buscar a resposta.';
     }
 }
-
-// O resto do seu código (o listener de evento e o console.log final) permanece o mesmo
-
-document.addEventListener('DOMContentLoaded', function() {
-    const exploreButton = document.getElementById('exploreButton');
-    if (exploreButton) {
-        exploreButton.addEventListener('click', processTopic);
-    } else {
-        console.error('Botão "Explorar" não encontrado!');
-    }
-});
-
-console.log('Teste aiSummary:', document.getElementById('aiSummary'));
-
-document.addEventListener('DOMContentLoaded', function() {
-    const exploreButton = document.getElementById('exploreButton');
-    if (exploreButton) {
-        exploreButton.addEventListener('click', processTopic);
-    } else {
-        console.error('Botão "Explorar" não encontrado!');
-    }
-});
-
-console.log('Teste aiSummary:', document.getElementById('aiSummary'));
