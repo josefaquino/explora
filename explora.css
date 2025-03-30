@@ -3,24 +3,62 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh; /* Garante que a altura seja pelo menos a da tela */
     margin: 0;
-    background-color: #f4f4f4; /* Fundo suave */
-    font-family: 'Arial', sans-serif;
+    background-color: #e0f2f7; /* Azul bem claro e suave */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte moderna */
 }
 
 .explora-logo {
-    font-size: 4rem; /* Tamanho do texto principal */
+    font-size: 4.5rem; /* Ligeiramente maior */
     font-weight: bold;
-    color: #4a90e2; /* Azul suave */
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    color: #26a69a; /* Verde-azulado atraente */
+    letter-spacing: 0.05em;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* Sombra ainda mais sutil */
+    margin-bottom: 20px; /* Espaçamento abaixo do logo */
 }
 
 .subtext {
-    font-size: 1.2rem; /* Tamanho do texto menor */
-    color: #555; /* Cor cinza escuro */
-    margin-top: 10px;
+    font-size: 1.3rem;
+    color: #757575; /* Cinza um pouco mais claro */
+    margin-top: 0; /* Remove a margem superior padrão */
+    margin-bottom: 30px; /* Espaçamento abaixo do subtexto */
     text-align: center;
+    font-style: italic; /* Adiciona um toque elegante */
+}
+
+.input-area {
+    display: flex;
+    gap: 10px; /* Espaçamento entre o input e o botão */
+    margin-top: 20px; /* Espaçamento acima da área de busca */
+}
+
+.input-area input[type="text"] {
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    flex-grow: 1; /* Faz o input ocupar mais espaço */
+}
+
+.input-area button {
+    background-color: #4caf50; /* Verde */
+    color: #f0f0f0; /* Texto branco */
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease; /* Transição suave ao passar o mouse */
+}
+
+.input-area button:hover {
+    background-color: #45a049; /* Verde um pouco mais escuro no hover */
+}
+
+.output-area {
+    margin-top: 40px;
+    text-align: center;
+    color: #616161; /* Cinza médio */
 }
