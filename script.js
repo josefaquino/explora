@@ -26,7 +26,7 @@ async function processTopic() {
 
         if (data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0].text) {
             const respostaIA = data.candidates[0].content.parts[0].text;
-            outputArea.textContent = respostaIA;
+            outputArea.innerHTML = respostaIA.replace(/\n\n/g, '<p></p>').replace(/\n/g, '<p></p>');
         } else {
             outputArea.textContent = 'Não foi possível obter uma resposta da IA.';
         }

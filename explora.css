@@ -22,7 +22,7 @@ body {
 
 .subtext {
     font-size: 1.3rem;
-    color: #757575;
+    color: #9e9e9e; /* Um cinza mais claro e discreto */
     margin-top: 0;
     margin-bottom: 30px;
     text-align: center;
