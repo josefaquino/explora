@@ -4,13 +4,16 @@ async function processTopic() {
     console.log('processTopic foi chamado!');
     const aiSummaryElement = document.getElementById('aiSummary');
     console.log('aiSummary element dentro da função:', aiSummaryElement);
-    // O resto do seu código da função processTopic permanece o mesmo
+
     const topicInput = document.getElementById('topicInput');
     const topic = topicInput.value;
     const outputArea = document.querySelector('.output-area');
     outputArea.textContent = 'Buscando informações...'; // Mensagem enquanto a API responde
 
     const model = 'gemini-2.0-flash';
+
+    const aiResponseElement = document.getElementById('aiResponse'); // Mova esta linha para cá
+    const relatedLinksElement = document.getElementById('relatedLinks'); // Mova esta linha para cá
 
     try {
         const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
@@ -28,13 +31,13 @@ async function processTopic() {
         const data = await response.json();
         console.log('Resposta da API:', data);
 
-        console.log('aiResponse element:', document.getElementById('aiResponse'));
-        console.log('relatedLinks element:', document.getElementById('relatedLinks'));
+        console.log('aiResponse element:', aiResponseElement); // Use a variável local agora
+        console.log('relatedLinks element:', relatedLinksElement); // Use a variável local agora
 
         if (data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0].text) {
             const respostaCompletaIA = data.candidates[0].content.parts[0].text;
-            const summaryDiv = document.getElementById('aiSummary'); // Usando a variável local agora
-            const responseDiv = document.getElementById('aiResponse'); // Usando a variável local agora
+            const summaryDiv = aiSummaryElement; // Use a variável que já obtivemos
+            const responseDiv = aiResponseElement; // Use a variável que já obtivemos
 
             // Vamos tentar separar o resumo da resposta principal (assumindo que o resumo vem no início)
             const parts = respostaCompletaIA.split('\n\n');
@@ -61,6 +64,8 @@ async function processTopic() {
         outputArea.textContent = 'Ocorreu um erro ao buscar a resposta.';
     }
 }
+
+// O resto do seu código (o listener de evento e o console.log final) permanece o mesmo
 
 document.addEventListener('DOMContentLoaded', function() {
     const exploreButton = document.getElementById('exploreButton');
