@@ -5,27 +5,26 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    background-color: #ffffff; /* Fundo branco */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    font-family: 'Oswald', sans-serif;
+    color: #333; /* Texto principal */
+}
+
+header {
+    text-align: center;
 }
 
 .explora-logo {
-    font-size: 4.5rem;
+    font-size: 4rem;
     font-weight: bold;
-    color: #6610f2; /* Nova cor roxa */
-    letter-spacing: 0.05em;
+    color: #6610f2;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    font-family: 'Oswald', sans-serif; /* Nova fonte Oswald */
-    /* Você pode remover a linha abaixo se não quiser mais usar a fonte Epilogue */
-    /* font-weight: 200; */
+    margin-bottom: 10px;
 }
+
 .subtext {
-    font-size: 1.3rem;
-    color: #9e9e9e; /* Um cinza mais claro e discreto */
-    margin-top: 0;
-    margin-bottom: 30px;
-    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
     font-style: italic;
 }
 
@@ -33,42 +32,49 @@ body {
     display: flex;
     gap: 10px;
     margin-top: 20px;
-    width: 80%; /* Aumenta a largura da área de busca */
-    max-width: 600px; /* Define uma largura máxima para não ficar muito grande em telas maiores */
+    width: 80%;
+    max-width: 600px;
 }
 
 .input-area input[type="text"] {
-    padding: 12px 15px;
+    padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
-    flex-grow: 2; /* Dobra a proporção de crescimento do input */
+    flex-grow: 1;
 }
 
 .input-area button {
     background-color: #4caf50;
-    color: #f0f0f0;
+    color: #fff;
     padding: 12px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s;
 }
 
 .input-area button:hover {
     background-color: #45a049;
+    transform: scale(1.05);
 }
 
 .output-area {
-    margin-top: 40px;
-    text-align: justify; /* Justifica o texto */
-    color: #616161;
-    width: 50%; /* Define a largura máxima para 50% da tela */
-    margin-left: auto; /* Centraliza horizontalmente dentro da largura definida */
-    margin-right: auto;
-    padding: 20px; /* Adiciona um pouco de espaço interno para melhor leitura */
-    border: 1px solid #ddd; /* Adiciona uma borda sutil para delimitar a área */
-    border-radius: 5px; /* Arredonda as bordas */
+    margin-top: 20px;
+    text-align: justify;
+    width: 80%;
+    max-width: 600px;
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+    .output-area {
+        width: 90%;
+    }
 }
