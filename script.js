@@ -9,7 +9,7 @@ async function processTopic() {
     const model = 'gemini-2.0-flash';
 
     try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/<span class="math-inline">\{model\}\:generateContent?key\=</span>{apiKey}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -39,3 +39,12 @@ async function processTopic() {
         outputArea.textContent = 'Ocorreu um erro ao buscar a resposta.';
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const exploreButton = document.getElementById('exploreButton');
+    if (exploreButton) {
+        exploreButton.addEventListener('click', processTopic);
+    } else {
+        console.error('Botão "Explorar" não encontrado!');
+    }
+});
