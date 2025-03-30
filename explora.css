@@ -1,0 +1,26 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4; /* Fundo suave */
+    font-family: 'Arial', sans-serif;
+}
+
+.explora-logo {
+    font-size: 4rem; /* Tamanho do texto principal */
+    font-weight: bold;
+    color: #4a90e2; /* Azul suave */
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+}
+
+.subtext {
+    font-size: 1.2rem; /* Tamanho do texto menor */
+    color: #555; /* Cor cinza escuro */
+    margin-top: 10px;
+    text-align: center;
+}
