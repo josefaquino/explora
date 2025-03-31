@@ -30,6 +30,23 @@ body {
     margin-bottom: 60px; /* Aumentei um pouco para dar mais espaço */
 }
 
+#categorySelect {
+    padding: 10px;
+    margin-bottom: 20px; /* Adiciona um pouco de espaço abaixo do dropdown */
+    border: 1px solid #30363d;
+    background-color: #161b22;
+    color: #c9d1d9;
+    border-radius: 5px;
+    box-sizing: border-box;
+    width: 200%; /* Para ter a mesma largura do input */
+    max-width: 600px; /* Para ter a mesma largura máxima do input */
+}
+
+#categorySelect option {
+    background-color: #161b22;
+    color: #c9d1d9;
+}
+
 .input-area-wrapper {
     display: flex;
     flex-direction: column;
