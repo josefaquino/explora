@@ -42,9 +42,11 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Elementos não encontrados.');
     }
 
-    function processSearch() {
+    async function processSearch() {
         const topic = searchInput.value;
-        const category = categorySelect.value;
+        const category = categorySelect.value; // Ainda mantemos a categoria do dropdown por enquanto
+        const searchResponseDiv = document.getElementById('searchResponse');
+        const apiKey = 'AIzaSyCg6VKxU887z4QTfLBbNorlWx0asVUQmp0'; // Substitua pela sua chave de API real
 
         if (!topic.trim()) {
             searchResponseDiv.textContent = 'Por favor, digite algo para pesquisar.';
@@ -54,7 +56,13 @@ document.addEventListener('DOMContentLoaded', function() {
         searchResponseDiv.textContent = 'Carregando...';
         searchInput.value = 'Carregando ...';
 
-        const promptPrefix = categoryPrompts[category] || categoryPrompts['geral'];
+        // --- Chamada para classificar a pergunta ---
+        const classificationPrompt = `Classifique a seguinte pergunta em uma das seguintes categorias: Geral, Python, Node, Go, Astro, Gemini API, Flutter, NextJS, Angular, Biologia. Pergunta: ${topic}`;
+        const classificationResponse = await classifyQuestion(classificationPrompt, apiKey);
+        const questionCategory = classificationResponse.category || 'geral'; // Obtém a categoria classificada ou usa 'geral' como padrão
+
+        // --- Usa a categoria classificada para obter o prefixo do prompt ---
+        const promptPrefix = categoryPrompts[questionCategory] || categoryPrompts['geral'];
         const fullPrompt = promptPrefix + topic;
 
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
@@ -108,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-function startNewSearch(topic) { // Função movida para fora do DOMContentLoaded
+function startNewSearch(topic) {
     const searchInput = document.getElementById('searchInput');
     const searchButton = document.getElementById('searchButton');
     const searchResponseDiv = document.getElementById('searchResponse');
@@ -120,5 +128,30 @@ function startNewSearch(topic) { // Função movida para fora do DOMContentLoade
         searchButton.click();
     } else {
         console.error('Elementos de pesquisa não encontrados para pesquisar novamente.');
+    }
+}
+
+async function classifyQuestion(prompt, apiKey) {
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+    const headers = {
+        'Content-Type': 'application/json'
+    };
+    const body = JSON.stringify({
+        "contents": [{
+            "parts": [{"text": prompt}]
+        }]
+    });
+
+    try {
+        const response = await fetch(apiUrl, { method: 'POST', headers: headers, body: body });
+        if (!response.ok) throw new Error(`Erro na requisição: ${response.status}`);
+        const data = await response.json();
+        if (data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0].text) {
+            return { category: data.candidates[0].content.parts[0].text.trim().toLowerCase() };
+        }
+        return {};
+    } catch (error) {
+        console.error('Erro ao classificar a pergunta:', error);
+        return {};
     }
 }
