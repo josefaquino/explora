@@ -202,3 +202,12 @@ button#searchButton:hover {
 #groupedQuestionsDisplay li {
     margin-bottom: 5px;
 }
+
+#groupedQuestionsDisplay a {
+    color: #8ab4f1; /* Tom de azul mais claro */
+    text-decoration: none;
+}
+
+#groupedQuestionsDisplay a:hover {
+    text-decoration: underline; /* Manter o efeito de sublinhado ao passar o mouse */
+}
