@@ -27,12 +27,20 @@ body {
     font-family: 'Oswald', sans-serif;
     font-size: 7.5em; /* Triplicando o tamanho (era 2.5em) */
     color: #f0f6fc; /* Cor clara para o logo */
-    margin-bottom: 60px; /* Aumentei um pouco para dar mais espaço */
+    margin-bottom: 40px; /* Ajustei o espaçamento */
+}
+
+.category-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza os elementos dentro */
+    width: 100%; /* Ocupa a largura total do container */
+    margin-bottom: 20px; /* Espaço abaixo da seleção de categoria */
 }
 
 #categorySelect {
     padding: 10px;
-    margin-bottom: 20px; /* Adiciona um pouco de espaço abaixo do dropdown */
+    margin-bottom: 10px; /* Espaço entre o dropdown e o botão "Criar Categoria" */
     border: 1px solid #30363d;
     background-color: #161b22;
     color: #c9d1d9;
@@ -112,4 +120,20 @@ button#searchButton:hover {
 
 #searchResponse a:hover {
     text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
+
+.create-category-button {
+    padding: 10px 15px;
+    background-color: #1e40af; /* Azul (escolhi um tom do IDX) */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-top: 10px; /* Adiciona um pouco de espaço acima do botão */
+    margin-bottom: 10px; /* Adiciona um pouco de espaço abaixo do botão */
+}
+
+.create-category-button:hover {
+    background-color: #15317e; /* Um tom mais escuro para o hover */
 }

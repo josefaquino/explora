@@ -2,7 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchButton = document.getElementById('searchButton');
     const searchResponseDiv = document.getElementById('searchResponse');
     const searchInput = document.getElementById('searchInput');
-    const categorySelect = document.getElementById('categorySelect'); // Obtém o elemento select
+    const categorySelect = document.getElementById('categorySelect');
+    const createCategoryButton = document.getElementById('createCategoryButton'); // Obtém o botão "Criar Categoria"
     const apiKey = 'AIzaSyCg6VKxU887z4QTfLBbNorlWx0asVUQmp0'; // Substitua pela sua chave de API real
 
     // Mapeamento de categorias para prefixos de prompt
@@ -16,21 +17,34 @@ document.addEventListener('DOMContentLoaded', function() {
         'flutter': 'Responda à seguinte pergunta com foco no framework Flutter: ',
         'nextjs': 'Responda à seguinte pergunta no contexto do framework Next.js: ',
         'angular': 'Responda à seguinte pergunta com foco no framework Angular: ',
-        'biologia': 'Responda à seguinte pergunta de forma clara e concisa, como se estivesse explicando um conceito de biologia: ',
-        'outro1': 'Responda à seguinte pergunta focando neste tópico: ',
-        'outro2': 'Responda à seguinte pergunta focando neste tópico: ',
-        'outro3': 'Responda à seguinte pergunta focando neste tópico: ',
-        'outro4': 'Responda à seguinte pergunta focando neste tópico: ',
-        'outro5': 'Responda à seguinte pergunta focando neste tópico: '
+        'biologia': 'Responda à seguinte pergunta de forma clara e concisa, como se estivesse explicando um conceito de biologia: '
     };
 
-    if (searchButton && searchResponseDiv && searchInput && categorySelect) {
+    if (searchButton && searchResponseDiv && searchInput && categorySelect && createCategoryButton) {
         searchButton.addEventListener('click', processSearch);
 
-        // Adiciona funcionalidade para o Enter no campo de pesquisa
         searchInput.addEventListener('keypress', function(event) {
             if (event.key === 'Enter') {
                 processSearch();
+            }
+        });
+
+        // Adiciona funcionalidade ao botão "Criar Categoria"
+        createCategoryButton.addEventListener('click', function() {
+            const newCategoryName = prompt('Digite o nome da nova categoria:');
+            if (newCategoryName && newCategoryName.trim() !== '') {
+                const newOption = document.createElement('option');
+                newOption.value = newCategoryName.toLowerCase().replace(/\s+/g, '-'); // Cria um valor (minúsculo, espaços viram hífens)
+                newOption.textContent = newCategoryName;
+                categorySelect.appendChild(newOption);
+
+                // Opcional: Adicionar um prompt para a instrução da categoria
+                // const newCategoryPrompt = prompt(`Digite a instrução para a categoria "${newCategoryName}":`);
+                // if (newCategoryPrompt) {
+                //     categoryPrompts[newOption.value] = newCategoryPrompt + ' ';
+                // } else {
+                //     categoryPrompts[newOption.value] = 'Responda à seguinte pergunta focando em ' + newCategoryName + ': ';
+                // }
             }
         });
     } else {
@@ -39,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function processSearch() {
         const topic = searchInput.value;
-        const category = categorySelect.value; // Obtém a categoria selecionada
+        const category = categorySelect.value;
 
         if (!topic.trim()) {
             searchResponseDiv.textContent = 'Por favor, digite algo para pesquisar.';
@@ -47,10 +61,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         searchResponseDiv.textContent = 'Carregando...';
-        searchInput.value = 'Carregando ...'; // Mostra "Carregando ..." no campo de pesquisa
+        searchInput.value = 'Carregando ...';
 
-        // Constrói o prompt com base na categoria selecionada
-        const promptPrefix = categoryPrompts[category] || categoryPrompts['geral']; // Usa 'geral' como fallback
+        const promptPrefix = categoryPrompts[category] || categoryPrompts['geral'];
         const fullPrompt = promptPrefix + topic;
 
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
@@ -76,12 +89,11 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             console.log('Resposta da API:', data);
-            searchInput.value = topic; // Restaura o tópico no campo de pesquisa
+            searchInput.value = topic;
 
             if (data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0].text) {
                 let aiResponseText = data.candidates[0].content.parts[0].text;
 
-                // Encontra palavras-chave marcadas com asteriscos
                 const keywords = aiResponseText.match(/\*(.*?)\*/g);
 
                 if (keywords) {
@@ -100,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
             console.error('Erro ao executar a pesquisa:', error);
             searchResponseDiv.textContent = `Erro: ${error.message}`;
-            searchInput.value = topic; // Restaura o tópico em caso de erro
+            searchInput.value = topic;
         });
     }
 
@@ -110,10 +122,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const searchResponseDiv = document.getElementById('searchResponse');
 
         if (searchInput && searchButton && searchResponseDiv) {
-            searchInput.value = 'Carregando ...'; // Mostra "Carregando ..." no campo de pesquisa
-            searchResponseDiv.textContent = ''; // Limpa a resposta anterior
-            searchInput.value = topic; // Define o novo tópico no campo de pesquisa
-            // Simula o clique no botão de pesquisa (agora a função processSearch será chamada)
+            searchInput.value = 'Carregando ...';
+            searchResponseDiv.textContent = '';
+            searchInput.value = topic;
             searchButton.click();
         } else {
             console.error('Elementos de pesquisa não encontrados para pesquisar novamente.');
