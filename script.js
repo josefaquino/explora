@@ -1,4 +1,4 @@
-const apiKey = 'AIzaSyCg6VKxU887z4QTfLBbNorlWx0asVUQmp0'; // Substitua pela sua chave real
+const apiKey = 'SUA_CHAVE_DE_API_AQUI'; // Substitua pela sua chave real
 
 async function processTopic() {
     const topicInput = document.getElementById('topicInput');
@@ -32,7 +32,7 @@ async function processTopic() {
         }
 
         const data = await response.json();
-        console.log('Resposta da API:', data);
+        console.log('Dados recebidos:', data);
 
         const aiResponse = data?.candidates?.[0]?.content || 'Não foi possível obter uma resposta da IA.';
         document.getElementById('aiResponse').innerHTML = `<p>${aiResponse.replace(/\n/g, '<br>')}</p>`;
