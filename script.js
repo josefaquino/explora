@@ -70,8 +70,11 @@ document.addEventListener('DOMContentLoaded', function() {
 function searchAgain(topic) {
     const searchInput = document.getElementById('searchInput');
     const searchButton = document.getElementById('searchButton');
-    if (searchInput && searchButton) {
-        searchInput.value = topic;
+    const searchResponseDiv = document.getElementById('searchResponse'); // Pegue também a div de resposta
+
+    if (searchInput && searchButton && searchResponseDiv) {
+        searchInput.value = ''; // Limpa o campo de busca
+        searchResponseDiv.textContent = 'Carregando nova resposta...'; // Adiciona indicador visual com a mensagem desejada
         searchButton.click(); // Simula o clique no botão de pesquisa
     } else {
         console.error('Elementos de pesquisa não encontrados para pesquisar novamente.');
