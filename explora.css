@@ -98,7 +98,7 @@ body {
     flex-direction: column;
     align-items: center; /* Centraliza o input e o botão */
     width: auto; /* Ajusta a largura ao conteúdo */
-    max-width: 300px; /* Largura máxima */
+    max-width: 600px; /* Largura máxima */
     margin-bottom: 20px; /* Espaço abaixo da área de pesquisa */
 }
 
