@@ -12,27 +12,31 @@
 <body>
     <div class="container">
         <div class="explora-logo">Explora</div>
-        <div class="category-wrapper">
-            <label for="categorySelect">Escolha uma categoria:</label>
-            <select id="categorySelect">
-                <option value="geral">Geral</option>
-                <option value="python">Python</option>
-                <option value="node">Node</option>
-                <option value="go">Go</option>
-                <option value="astro">Astro</option>
-                <option value="gemini-api">Gemini API</option>
-                <option value="flutter">Flutter</Flutter></option>
-                <option value="nextjs">NextJS</option>
-                <option value="angular">Angular</option>
-                <option value="biologia">Biologia</option>
-            </select>
+        <div class="input-row">
+            <div class="category-wrapper">
+                <label for="categorySelect">Escolha uma categoria:</label>
+                <select id="categorySelect">
+                    <option value="geral">Geral</option>
+                    <option value="python">Python</option>
+                    <option value="node">Node</option>
+                    <option value="go">Go</option>
+                    <option value="astro">Astro</option>
+                    <option value="gemini-api">Gemini API</option>
+                    <option value="flutter">Flutter</Flutter></option>
+                    <option value="nextjs">NextJS</option>
+                    <option value="angular">Angular</option>
+                    <option value="biologia">Biologia</option>
+                </select>
+            </div>
             <button id="createCategoryButton" class="create-category-button">Criar Categoria</button>
         </div>
-        <div class="input-area-wrapper">
-            <label for="searchInput">Digite sua pergunta:</label>
-            <input type="text" id="searchInput" placeholder="Ex: O que é a fotossíntese?">
+        <div class="input-row">
+            <div class="input-area-wrapper">
+                <label for="searchInput">Digite sua pergunta:</label>
+                <input type="text" id="searchInput" placeholder="Ex: O que é a fotossíntese?">
+            </div>
+            <button id="searchButton">Explorar</button>
         </div>
-        <button id="searchButton">Explorar</button>
         <div id="searchResponse"></div>
     </div>
 

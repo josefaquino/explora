@@ -27,40 +27,71 @@ body {
     font-family: 'Oswald', sans-serif;
     font-size: 7.5em; /* Triplicando o tamanho (era 2.5em) */
     color: #f0f6fc; /* Cor clara para o logo */
-    margin-bottom: 40px; /* Ajustei o espaçamento */
+    margin-bottom: 30px; /* Ajustei o espaçamento */
+}
+
+.input-row {
+    display: flex;
+    width: 100%;
+    align-items: center; /* Alinha verticalmente os itens na linha */
+    margin-bottom: 20px; /* Espaço entre as linhas de input/botão */
 }
 
 .category-wrapper {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza os elementos dentro */
-    width: 100%; /* Ocupa a largura total do container */
-    margin-bottom: 20px; /* Espaço abaixo da seleção de categoria */
+    align-items: flex-start; /* Alinha o label à esquerda */
+    flex-grow: 1; /* Permite que o dropdown ocupe o espaço restante */
+    margin-right: 10px; /* Espaço entre o dropdown e o botão "Criar Categoria" */
+}
+
+.category-wrapper label {
+    margin-bottom: 5px; /* Espaçamento uniforme para o label da categoria */
 }
 
 #categorySelect {
     padding: 10px;
-    margin-bottom: 10px; /* Espaço entre o dropdown e o botão "Criar Categoria" */
     border: 1px solid #30363d;
     background-color: #161b22;
     color: #c9d1d9;
     border-radius: 5px;
     box-sizing: border-box;
-    width: 200%; /* Para ter a mesma largura do input */
-    max-width: 600px; /* Para ter a mesma largura máxima do input */
+    width: 100%; /* Ocupa a largura disponível no container pai */
+    font-family: "Ubuntu Sans", sans-serif; /* Define a fonte */
+    font-size: 1em; /* Define o tamanho da fonte */
+    height: 40px; /* Define a altura */
 }
 
 #categorySelect option {
     background-color: #161b22;
     color: #c9d1d9;
+    font-family: "Ubuntu Sans", sans-serif; /* Define a fonte */
+    font-size: 1em; /* Define o tamanho da fonte */
+}
+
+.create-category-button {
+    padding: 10px 15px;
+    background-color: #1e40af; /* Azul */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em; /* Define o tamanho da fonte */
+    font-family: "Ubuntu Sans", sans-serif; /* Define a fonte */
+    height: 40px; /* Define a altura */
+    white-space: nowrap; /* Evita que o texto quebre */
+}
+
+.create-category-button:hover {
+    background-color: #15317e;
 }
 
 .input-area-wrapper {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza o label e o input */
-    width: 100%; /* Ocupa a largura total do container */
-    margin-bottom: 30px; /* Diminuí o espaço para o botão */
+    align-items: flex-start; /* Alinha o label à esquerda */
+    flex-grow: 1; /* Permite que o input ocupe o espaço restante */
+    margin-right: 10px; /* Espaço entre o input e o botão "Explorar" */
 }
 
 .input-area-wrapper label {
@@ -69,26 +100,29 @@ body {
 
 .input-area-wrapper input[type="text"] {
     padding: 10px;
-    margin-bottom: 10px; /* Espaço entre o input e o botão (padrão) */
-    margin-top: 10px; /* Adicionando espaço entre o label e o input */
-    width: 200%; /* Dobra a largura */
+    margin-top: 5px;
     border: 1px solid #30363d;
     background-color: #161b22;
     color: #c9d1d9;
     border-radius: 5px;
     box-sizing: border-box;
-    max-width: 600px; /* Define uma largura máxima para evitar que fique muito grande */
+    width: 100%; /* Ocupa a largura disponível no container pai */
+    font-family: "Ubuntu Sans", sans-serif; /* Define a fonte */
+    font-size: 1em; /* Define o tamanho da fonte */
+    height: 40px; /* Define a altura */
 }
 
 button#searchButton {
-    padding: 12px 24px;
-    background-color: #238636; /* Verde (padrão IDX) */
+    padding: 10px 15px;
+    background-color: #238636; /* Verde */
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1em;
-    margin-bottom: 40px; /* Espaço após o botão (padrão) */
+    font-size: 1em; /* Define o tamanho da fonte */
+    font-family: "Ubuntu Sans", sans-serif; /* Define a fonte */
+    height: 40px; /* Define a altura */
+    white-space: nowrap; /* Evita que o texto quebre */
 }
 
 button#searchButton:hover {
@@ -101,39 +135,23 @@ button#searchButton:hover {
     padding: 20px;
     border-radius: 5px;
     width: 50%;
-    text-align: left; /* Alinha o texto da resposta à esquerda para melhor leitura */
+    text-align: left;
     box-sizing: border-box;
-    white-space: pre-wrap; /* Mantém a formatação da resposta e quebra linhas */
-    overflow-wrap: break-word; /* Quebra palavras longas para evitar overflow */
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
 }
 
 #searchResponse pre {
-    white-space: pre-wrap; /* Garante que a formatação dentro do <pre> seja preservada e quebre linhas */
-    overflow-wrap: break-word; /* Quebra palavras longas dentro do <pre> */
-    margin: 0; /* Remove margens padrão do <pre> */
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    margin: 0;
 }
 
 #searchResponse a {
-    color: #8ab4f1; /* Cor clara para os links (azul claro - tom do IDX) */
-    text-decoration: none; /* Remove o sublinhado padrão dos links */
+    color: #8ab4f1;
+    text-decoration: none;
 }
 
 #searchResponse a:hover {
-    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
-}
-
-.create-category-button {
-    padding: 10px 15px;
-    background-color: #1e40af; /* Azul (escolhi um tom do IDX) */
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9em;
-    margin-top: 10px; /* Adiciona um pouco de espaço acima do botão */
-    margin-bottom: 10px; /* Adiciona um pouco de espaço abaixo do botão */
-}
-
-.create-category-button:hover {
-    background-color: #15317e; /* Um tom mais escuro para o hover */
+    text-decoration: underline;
 }
