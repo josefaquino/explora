@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchResponseDiv = document.getElementById('searchResponse');
     const searchInput = document.getElementById('searchInput');
     const categorySelect = document.getElementById('categorySelect');
-    const createCategoryButton = document.getElementById('createCategoryButton'); // Obtém o botão "Criar Categoria"
+    const createCategoryButton = document.getElementById('createCategoryButton');
     const apiKey = 'AIzaSyCg6VKxU887z4QTfLBbNorlWx0asVUQmp0'; // Substitua pela sua chave de API real
 
     // Mapeamento de categorias para prefixos de prompt
@@ -29,22 +29,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Adiciona funcionalidade ao botão "Criar Categoria"
         createCategoryButton.addEventListener('click', function() {
             const newCategoryName = prompt('Digite o nome da nova categoria:');
             if (newCategoryName && newCategoryName.trim() !== '') {
                 const newOption = document.createElement('option');
-                newOption.value = newCategoryName.toLowerCase().replace(/\s+/g, '-'); // Cria um valor (minúsculo, espaços viram hífens)
+                newOption.value = newCategoryName.toLowerCase().replace(/\s+/g, '-');
                 newOption.textContent = newCategoryName;
                 categorySelect.appendChild(newOption);
-
-                // Opcional: Adicionar um prompt para a instrução da categoria
-                // const newCategoryPrompt = prompt(`Digite a instrução para a categoria "${newCategoryName}":`);
-                // if (newCategoryPrompt) {
-                //     categoryPrompts[newOption.value] = newCategoryPrompt + ' ';
-                // } else {
-                //     categoryPrompts[newOption.value] = 'Responda à seguinte pergunta focando em ' + newCategoryName + ': ';
-                // }
             }
         });
     } else {
@@ -115,19 +106,19 @@ document.addEventListener('DOMContentLoaded', function() {
             searchInput.value = topic;
         });
     }
-
-    function startNewSearch(topic) {
-        const searchInput = document.getElementById('searchInput');
-        const searchButton = document.getElementById('searchButton');
-        const searchResponseDiv = document.getElementById('searchResponse');
-
-        if (searchInput && searchButton && searchResponseDiv) {
-            searchInput.value = 'Carregando ...';
-            searchResponseDiv.textContent = '';
-            searchInput.value = topic;
-            searchButton.click();
-        } else {
-            console.error('Elementos de pesquisa não encontrados para pesquisar novamente.');
-        }
-    }
 });
+
+function startNewSearch(topic) { // Função movida para fora do DOMContentLoaded
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+    const searchResponseDiv = document.getElementById('searchResponse');
+
+    if (searchInput && searchButton && searchResponseDiv) {
+        searchInput.value = 'Carregando ...';
+        searchResponseDiv.textContent = '';
+        searchInput.value = topic;
+        searchButton.click();
+    } else {
+        console.error('Elementos de pesquisa não encontrados para pesquisar novamente.');
+    }
+}

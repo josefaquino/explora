@@ -85,6 +85,7 @@ body {
     font-family: "Ubuntu Sans", sans-serif;
     height: 40px;
     width: 100%; /* Ocupa 100% da largura do pai */
+    max-width: 300px; /* Largura máxima */
     white-space: nowrap;
 }
 
@@ -96,8 +97,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center; /* Centraliza o input e o botão */
-    width: 75%; /* Aumentamos a largura para 75% */
-    max-width: none; /* Removendo a largura máxima para ocupar mais espaço */
+    width: auto; /* Ajusta a largura ao conteúdo */
+    max-width: 300px; /* Largura máxima */
     margin-bottom: 20px; /* Espaço abaixo da área de pesquisa */
 }
 
@@ -130,7 +131,7 @@ body {
 
 button#searchButton {
     padding: 10px 15px;
-    background-color: #238636; /* Verde - CORRETO */
+    background-color: #238636; /* Verde */
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -138,7 +139,8 @@ button#searchButton {
     font-size: 1em;
     font-family: "Ubuntu Sans", sans-serif;
     height: 40px;
-    width: 100%; /* Ocupa 100% da largura do pai */
+    width: auto; /* Ajusta a largura ao conteúdo */
+    max-width: 300px; /* Largura máxima */
     white-space: nowrap;
 }
 
@@ -151,7 +153,7 @@ button#searchButton:hover {
     color: #c9d1d9;
     padding: 20px;
     border-radius: 5px;
-    width: 100%; /* Aumentamos a largura para 100% */
+    width: 100%;
     text-align: left;
     box-sizing: border-box;
     white-space: pre-wrap;
