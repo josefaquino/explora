@@ -3,15 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste de Pesquisa</title>
+    <title>Explora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="explora.css">
 </head>
 <body>
-    <div>
-        <label for="searchInput">Digite sua pesquisa:</label>
-        <input type="text" id="searchInput" placeholder="Ex: O que é a fotossíntese?">
+    <div class="container">
+        <div class="explora-logo">Explora</div>
+        <div>
+            <label for="searchInput">Digite sua pesquisa:</label>
+            <input type="text" id="searchInput" placeholder="Ex: O que é a fotossíntese?">
+        </div>
+        <button id="searchButton">Pesquisar</button>
+        <div id="searchResponse"></div>
     </div>
-    <button id="searchButton">Pesquisar</button>
-    <div id="searchResponse"></div>
 
     <script src="script.js"></script>
 </body>

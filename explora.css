@@ -1,80 +1,67 @@
 body {
+    font-family: sans-serif;
+    background-color: #0d1117; /* Azul marinho (padrão IDX) */
+    color: #c9d1d9; /* Textos claros (padrão IDX) */
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    background-color: #f9f9f9;
-    font-family: 'Oswald', sans-serif;
-    color: #333; /* Texto principal */
+    padding: 20px;
 }
 
-header {
-    text-align: center;
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%; /* Ajuste conforme necessário */
+    max-width: 960px; /* Largura máxima para telas maiores */
 }
 
 .explora-logo {
-    font-size: 4rem;
-    font-weight: bold;
-    color: #6610f2;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5em;
+    color: #f0f6fc; /* Cor clara para o logo */
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    padding: 10px;
     margin-bottom: 10px;
-}
-
-.subtext {
-    font-size: 1.2rem;
-    color: #666;
-    font-style: italic;
-}
-
-.input-area {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-    width: 80%;
-    max-width: 600px;
-}
-
-.input-area input[type="text"] {
-    padding: 12px;
-    border: 1px solid #ccc;
+    width: 100%;
+    border: 1px solid #30363d;
+    background-color: #161b22;
+    color: #c9d1d9;
     border-radius: 5px;
-    font-size: 1rem;
-    flex-grow: 1;
+    box-sizing: border-box;
 }
 
-.input-area button {
-    background-color: #4caf50;
+button#searchButton {
+    padding: 12px 24px;
+    background-color: #238636; /* Verde (padrão IDX) */
     color: #fff;
-    padding: 12px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s;
+    font-size: 1em;
+    margin-bottom: 20px;
 }
 
-.input-area button:hover {
-    background-color: #45a049;
-    transform: scale(1.05);
+button#searchButton:hover {
+    background-color: #196c2e;
 }
 
-.output-area {
-    margin-top: 20px;
-    text-align: justify;
-    width: 80%;
-    max-width: 600px;
-    background: #fff;
+#searchResponse {
+    background-color: #161b22;
+    color: #c9d1d9;
     padding: 20px;
-    border: 1px solid #ddd;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    text-align: center; /* Centraliza o texto dentro da div, mas não justifica */
+    box-sizing: border-box;
+    white-space: pre-wrap; /* Mantém a formatação da resposta */
 }
 
-@media (max-width: 600px) {
-    .output-area {
-        width: 90%;
-    }
+#searchResponse pre {
+    text-align: left; /* Alinha o texto da resposta à esquerda dentro do <pre> */
 }
