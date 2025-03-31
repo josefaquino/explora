@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <div class="explora-logo">Explora</div>
-        <div class="input-row">
+        <div class="input-area">
             <div class="category-wrapper">
                 <label for="categorySelect">Escolha uma categoria:</label>
                 <select id="categorySelect">
@@ -27,15 +27,15 @@
                     <option value="angular">Angular</option>
                     <option value="biologia">Biologia</option>
                 </select>
+                <button id="createCategoryButton" class="create-category-button">Criar Categoria</button>
             </div>
-            <button id="createCategoryButton" class="create-category-button">Criar Categoria</button>
-        </div>
-        <div class="input-row">
-            <div class="input-area-wrapper">
-                <label for="searchInput">Digite sua pergunta:</label>
-                <input type="text" id="searchInput" placeholder="Ex: O que é a fotossíntese?">
+            <div class="search-wrapper">
+                <div class="input-area-wrapper">
+                    <label for="searchInput">Digite sua pergunta:</label>
+                    <input type="text" id="searchInput" placeholder="Ex: O que é a fotossíntese?">
+                </div>
+                <button id="searchButton">Explorar</button>
             </div>
-            <button id="searchButton">Explorar</button>
         </div>
         <div id="searchResponse"></div>
     </div>
