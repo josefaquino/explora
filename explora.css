@@ -1,5 +1,10 @@
 body {
-    font-family: sans-serif;
+    font-family: "Ubuntu Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400; /* Peso padrão */
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
     background-color: #0d1117; /* Azul marinho (padrão IDX) */
     color: #c9d1d9; /* Textos claros (padrão IDX) */
     display: flex;
@@ -22,18 +27,31 @@ body {
     font-family: 'Oswald', sans-serif;
     font-size: 2.5em;
     color: #f0f6fc; /* Cor clara para o logo */
-    margin-bottom: 20px;
+    margin-bottom: 40px; /* Espaço simétrico (ajuste conforme necessário) */
+}
+
+.input-area-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o label e o input */
+    width: 100%; /* Ocupa a largura total do container */
+    margin-bottom: 40px; /* Espaço simétrico (ajuste conforme necessário) */
+}
+
+.input-area-wrapper label {
+    margin-bottom: 5px;
 }
 
 input[type="text"] {
     padding: 10px;
     margin-bottom: 10px;
-    width: 100%;
+    width: 200%; /* Dobra a largura */
     border: 1px solid #30363d;
     background-color: #161b22;
     color: #c9d1d9;
     border-radius: 5px;
     box-sizing: border-box;
+    max-width: 600px; /* Define uma largura máxima para evitar que fique muito grande */
 }
 
 button#searchButton {
@@ -57,11 +75,14 @@ button#searchButton:hover {
     padding: 20px;
     border-radius: 5px;
     width: 50%;
-    text-align: center; /* Centraliza o texto dentro da div, mas não justifica */
+    text-align: left; /* Alinha o texto da resposta à esquerda para melhor leitura */
     box-sizing: border-box;
-    white-space: pre-wrap; /* Mantém a formatação da resposta */
+    white-space: pre-wrap; /* Mantém a formatação da resposta e quebra linhas */
+    overflow-wrap: break-word; /* Quebra palavras longas para evitar overflow */
 }
 
 #searchResponse pre {
-    text-align: left; /* Alinha o texto da resposta à esquerda dentro do <pre> */
+    white-space: pre-wrap; /* Garante que a formatação dentro do <pre> seja preservada e quebre linhas */
+    overflow-wrap: break-word; /* Quebra palavras longas dentro do <pre> */
+    margin: 0; /* Remove margens padrão do <pre> */
 }
