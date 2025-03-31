@@ -36,7 +36,8 @@ body {
     align-items: center; /* Centraliza o label e o input */
     width: 100%; /* Ocupa a largura total do container */
     margin-bottom: 40px; /* Espaço simétrico (ajuste conforme necessário) */
-    font-family: 'Oswald', sans-serif; /* Aplicando a mesma fonte do logo */
+    /* REMOVA A LINHA ABAIXO */
+    /* font-family: 'Oswald', sans-serif; */
 }
 
 .input-area-wrapper label {
