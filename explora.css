@@ -27,7 +27,7 @@ body {
     font-family: 'Oswald', sans-serif;
     font-size: 7.5em; /* Triplicando o tamanho (era 2.5em) */
     color: #f0f6fc; /* Cor clara para o logo */
-    margin-bottom: 40px; /* Espaço simétrico (ajuste conforme necessário) */
+    margin-bottom: 60px; /* Aumentei um pouco para dar mais espaço */
 }
 
 .input-area-wrapper {
@@ -35,16 +35,17 @@ body {
     flex-direction: column;
     align-items: center; /* Centraliza o label e o input */
     width: 100%; /* Ocupa a largura total do container */
-    margin-bottom: 40px; /* Espaço simétrico (ajuste conforme necessário) */
+    margin-bottom: 30px; /* Diminuí o espaço para o botão */
 }
 
 .input-area-wrapper label {
     margin-bottom: 5px;
 }
 
-input[type="text"] {
+.input-area-wrapper input[type="text"] {
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 10px; /* Espaço entre o input e o botão (padrão) */
+    margin-top: 10px; /* Adicionando espaço entre o label e o input */
     width: 200%; /* Dobra a largura */
     border: 1px solid #30363d;
     background-color: #161b22;
@@ -62,7 +63,7 @@ button#searchButton {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
-    margin-bottom: 20px;
+    margin-bottom: 40px; /* Espaço após o botão (padrão) */
 }
 
 button#searchButton:hover {
@@ -85,4 +86,13 @@ button#searchButton:hover {
     white-space: pre-wrap; /* Garante que a formatação dentro do <pre> seja preservada e quebre linhas */
     overflow-wrap: break-word; /* Quebra palavras longas dentro do <pre> */
     margin: 0; /* Remove margens padrão do <pre> */
+}
+
+#searchResponse a {
+    color: #8ab4f1; /* Cor clara para os links (azul claro - tom do IDX) */
+    text-decoration: none; /* Remove o sublinhado padrão dos links */
+}
+
+#searchResponse a:hover {
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
 }
