@@ -9,7 +9,7 @@ async function processTopic() {
     const model = 'gemini-2.0-flash';
 
     try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/<span class="math-inline">\{model\}\:generateContent?key\=</span>{apiKey}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ async function testApi() {
     const query = "Explain how AI works";
 
     try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/<span class="math-inline">\{model\}\:generateContent?key\=</span>{apiKey}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -78,3 +78,19 @@ async function testApi() {
         outputArea.textContent = 'Erro ao testar a API.';
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const exploreButton = document.getElementById('exploreButton');
+    if (exploreButton) {
+        exploreButton.addEventListener('click', processTopic);
+    } else {
+        console.error('Botão "Explorar" não encontrado!');
+    }
+
+    const testApiButton = document.getElementById('testApiButton');
+    if (testApiButton) {
+        testApiButton.addEventListener('click', testApi);
+    } else {
+        console.error('Botão "Testar API (Curl)" não encontrado!');
+    }
+});
