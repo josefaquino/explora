@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const categorySelect = document.getElementById('categorySelect');
     const createCategoryButton = document.getElementById('createCategoryButton');
     const apiKey = 'AIzaSyCg6VKxU887z4QTfLBbNorlWx0asVUQmp0'; // Substitua pela sua chave de API real
-    const groupedQuestionsDisplay = document.getElementById('groupedQuestionsDisplay'); // Obtém a referência para a nova div
+    const groupedQuestionsDisplay = document.getElementById('groupedQuestionsDisplay'); // Obtém a referência para a div de perguntas agrupadas
 
     // Mapeamento de categorias para prefixos de prompt
     const categoryPrompts = {
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let displayHTML = `<h3>Perguntas do tema: ${questionCategory.charAt(0).toUpperCase() + questionCategory.slice(1)}</h3><ul>`;
             if (groupedQuestions[questionCategory]) {
                 groupedQuestions[questionCategory].forEach(question => {
-                    displayHTML += `<li>${question}</li>`;
+                    displayHTML += `<li><a href="#" onclick="startNewSearch('${question}')">${question}</a></li>`;
                 });
             }
             displayHTML += `</ul>`;
