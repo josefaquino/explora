@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const categorySelect = document.getElementById('categorySelect');
     const createCategoryButton = document.getElementById('createCategoryButton');
     const apiKey = 'AIzaSyCg6VKxU887z4QTfLBbNorlWx0asVUQmp0'; // Substitua pela sua chave de API real
+    const groupedQuestionsDisplay = document.getElementById('groupedQuestionsDisplay'); // Obtém a referência para a nova div
 
     // Mapeamento de categorias para prefixos de prompt
     const categoryPrompts = {
@@ -20,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'biologia': 'Responda à seguinte pergunta de forma clara e concisa, como se estivesse explicando um conceito de biologia: '
     };
 
-    if (searchButton && searchResponseDiv && searchInput && categorySelect && createCategoryButton) {
+    if (searchButton && searchResponseDiv && searchInput && categorySelect && createCategoryButton && groupedQuestionsDisplay) {
         searchButton.addEventListener('click', processSearch);
 
         searchInput.addEventListener('keypress', function(event) {
@@ -42,6 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Elementos não encontrados.');
     }
 
+    let groupedQuestions = {};
+
     async function processSearch() {
         const topic = searchInput.value;
         const category = categorySelect.value; // Ainda mantemos a categoria do dropdown por enquanto
@@ -60,6 +63,24 @@ document.addEventListener('DOMContentLoaded', function() {
         const classificationPrompt = `Classifique a seguinte pergunta em uma das seguintes categorias: Geral, Python, Node, Go, Astro, Gemini API, Flutter, NextJS, Angular, Biologia. Pergunta: ${topic}`;
         const classificationResponse = await classifyQuestion(classificationPrompt, apiKey);
         const questionCategory = classificationResponse.category || 'geral'; // Obtém a categoria classificada ou usa 'geral' como padrão
+
+        // --- Salvar a pergunta no objeto groupedQuestions ---
+        if (!groupedQuestions[questionCategory]) {
+            groupedQuestions[questionCategory] = [];
+        }
+        groupedQuestions[questionCategory].push(topic);
+
+        // --- Exibir as perguntas agrupadas ---
+        if (groupedQuestionsDisplay) {
+            let displayHTML = `<h3>Perguntas do tema: ${questionCategory.charAt(0).toUpperCase() + questionCategory.slice(1)}</h3><ul>`;
+            if (groupedQuestions[questionCategory]) {
+                groupedQuestions[questionCategory].forEach(question => {
+                    displayHTML += `<li>${question}</li>`;
+                });
+            }
+            displayHTML += `</ul>`;
+            groupedQuestionsDisplay.innerHTML = displayHTML;
+        }
 
         // --- Usa a categoria classificada para obter o prefixo do prompt ---
         const promptPrefix = categoryPrompts[questionCategory] || categoryPrompts['geral'];

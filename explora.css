@@ -174,3 +174,31 @@ button#searchButton:hover {
 #searchResponse a:hover {
     text-decoration: underline;
 }
+
+/* Estilos para a seção de perguntas agrupadas */
+#groupedQuestionsDisplay {
+    background-color: #1d232a; /* Um fundo ligeiramente mais escuro */
+    color: #c9d1d9;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px; /* Espaço entre a resposta e as perguntas agrupadas */
+    text-align: left;
+    box-sizing: border-box;
+    width: 100%; /* Ocupa a mesma largura da resposta */
+}
+
+#groupedQuestionsDisplay h3 {
+    color: #58a6ff; /* Uma cor de destaque para o título */
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+#groupedQuestionsDisplay ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 0;
+}
+
+#groupedQuestionsDisplay li {
+    margin-bottom: 5px;
+}
