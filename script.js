@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (searchButton && searchResponseDiv && searchInput) {
         searchButton.addEventListener('click', async function() {
-            const query = searchInput.value;
-            if (!query.trim()) {
+            const topic = searchInput.value;
+            if (!topic.trim()) {
                 searchResponseDiv.textContent = 'Por favor, digite algo para pesquisar.';
                 return;
             }
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
             };
             const body = JSON.stringify({
                 "contents": [{
-                    "parts": [{"text": query}]
+                    "parts": [{"text": `Explique o tópico: ${topic}. Inclua também uma lista de 2 ou 3 palavras-chave importantes para exploração adicional, marcadas com asteriscos.`}]
                 }]
             });
 
@@ -39,7 +39,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('Resposta da API:', data);
 
                 if (data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0].text) {
-                    searchResponseDiv.innerHTML = '<pre>' + data.candidates[0].content.parts[0].text + '</pre>';
+                    let aiResponseText = data.candidates[0].content.parts[0].text;
+
+                    // Encontra palavras-chave marcadas com asteriscos
+                    const keywords = aiResponseText.match(/\*(.*?)\*/g);
+
+                    if (keywords) {
+                        keywords.forEach(keyword => {
+                            const cleanKeyword = keyword.replace(/\*/g, '').trim();
+                            const link = `<a href="#" onclick="searchAgain('${cleanKeyword}')">${cleanKeyword}</a>`;
+                            aiResponseText = aiResponseText.replace(keyword, link);
+                        });
+                    }
+
+                    searchResponseDiv.innerHTML = '<pre>' + aiResponseText + '</pre>';
                 } else {
                     searchResponseDiv.textContent = 'Resposta da API em formato inesperado.';
                 }
@@ -53,3 +66,14 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Elementos não encontrados.');
     }
 });
+
+function searchAgain(topic) {
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+    if (searchInput && searchButton) {
+        searchInput.value = topic;
+        searchButton.click(); // Simula o clique no botão de pesquisa
+    } else {
+        console.error('Elementos de pesquisa não encontrados para pesquisar novamente.');
+    }
+}
